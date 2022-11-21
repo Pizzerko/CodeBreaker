@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function initialize(){
+            vaultNumber = document.getElementById("vault");
+            userVaultGuess = document.getElementById("guess");
+            guessOne = document.getElementById("1");
+        }
+        function generateRandomNumber(){
+            num1=parseInt((Math.random()*3))+1;
+            num2=parseInt((Math.random()*3))+1;
+            num3=parseInt((Math.random()*3))+1;
+            vNum=num1+""+num2+""+num3;
+            resetNumber();
+        }
+        function pressNumber1(){
+            let length = guessOne.length;
+            if(length > 3){
+
+            }
+            else{
+                buttonOne();
+            }
+        }
+        function pressNumber2(){
+            let length = guessOne.length;
+            if(length < 3){
+            buttonTwo();
+            }
+        }
+        function pressNumber3(){
+            let length = guessOne.length;
+            if(length < 3){
+            buttonThree();
+            }
+        }
+        function buttonOne(){
+            guessOne.innerHTML+= "1";
+        }
+        function buttonTwo(){
+            guessOne.innerHTML+="2";
+        }
+        function buttonThree(){
+            guessOne.innerHTML+="3";
+        }   
+        function resetNumber(){
+            userVaultGuess.innerHTML= "Vault: " + vNum;
+        }
+    </script>
+</head>
+<body onload="initialize();">
+    <h1>Guess the Vault Number!</h1>
+    <div>
+        Time Left: 7
+    </div>
+    <span id="guess">
+        Vault Code:
+    </span>
+    <span id="1">
+    </span>
+    <span id="1">
+    </span>
+    <span id="1">
+    </span>
+    <span></span>
+    <p>
+
+    </p>
+    <button onclick="pressNumber1();">1</button>
+    <button onclick="pressNumber2();">2</button>
+    <button onclick="pressNumber3();">3</button>
+    <p>
+
+    </p>
+    <button onclick="generateRandomNumber();">reset</button>
+</body>
+</html>
