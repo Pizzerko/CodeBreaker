@@ -7,13 +7,13 @@
     <title>Document</title>
     <script>
         length = 0;
-        theTime = 7;
         function initialize(){
             vaultNumber = document.getElementById("vault");
             userVaultGuess = document.getElementById("guess");
             guessOne = document.getElementById("1");
             timer = document.getElementById("time");
             message = document.getElementById("message");
+            theTime = document.getElementById("rounds");
             generateRandomNumber();
         }
         function generateRandomNumber(){
@@ -55,27 +55,41 @@
             length = 0;
         }
         function enter(){
-            theTime = 7;
-            if(parseInt.guessOne==parseInt.vNum)
+            let guess = guessOne.innerHTML;
+            if(parseInt(guess)==parseInt(vNum)) {
                 message.innerHTML="You opened the vault! Congrats!";
+                console.log("hello");
+            }
             else
-                theTime--;
-                timer.innerHTML = "Time Left again: " + theTime;
-                userVaultGuess.innerHTML= "Vault Code:";
-                guessOne.innerHTML= "";
-                length=0;
-                message.innerHTML="Wrong, try again!";
-                if(theTime==0){
-                    message.innerHTML="You failed and will be jailed forever...";
+                loseRound();
                 }
-        }
+        function loseRound(){
+            timer.innerHTML = "Time Left:"
+            let rounds = theTime.innerHTML;
+            if(parseInt(rounds) > 0) {
+            rounds = parseInt(rounds) - 1;
+            }
+            theTime.innerHTML = parseInt(rounds);
+            userVaultGuess.innerHTML= "Vault Code:";
+            guessOne.innerHTML= "";
+            length=0;
+            if(parseInt(rounds) == 0){
+                message.innerHTML="You failed and will be jailed forever...";
+                
+            }
+            else{
+                message.innerHTML="Wrong, try again!";
+            }
+    }
     </script>
 </head>
 <body onload="initialize();">
     <h1>Guess the Vault Number!</h1>
-    <div id="time">
-        Time Left: 7
-    </div>
+    <span id="time">
+        Time Left:
+    </span>
+    <span id="rounds">7</span>
+    <p></p>
     <span id="guess">
         Vault Code:
     </span>
